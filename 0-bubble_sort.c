@@ -11,11 +11,11 @@ void bubble_sort(int *array, size_t size)
 	int swap;
 	size_t i, j;
 
-	/*j =  size - 1;*/
-
-
 	if (size < 2)
-			return;
+	{
+		return;
+	}
+
 
 	for (i = 0; i <= size; i++)
 	{
@@ -33,7 +33,6 @@ void bubble_sort(int *array, size_t size)
 						print_array(array, size);
 					}
 				}
-				
 			}
 		}
 	}
