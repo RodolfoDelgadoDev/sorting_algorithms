@@ -17,7 +17,7 @@ void selection_sort(int *array, size_t size)
 	{
 		return;
 	}
-	
+
 	/* One by one move through the array*/
 	for (i = 0; i < size; i++)
 	{
