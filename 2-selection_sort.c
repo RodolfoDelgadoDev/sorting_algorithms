@@ -13,9 +13,11 @@ void selection_sort(int *array, size_t size)
 	size_t i, j;
 	int first = 0, minimum = 0, position = 0;
 
-	if (size < 2) /*Ask if size array is < than 2*/
-			return;
-
+	if (size < 2)
+	{
+		return;
+	}
+	
 	/* One by one move through the array*/
 	for (i = 0; i < size; i++)
 	{
