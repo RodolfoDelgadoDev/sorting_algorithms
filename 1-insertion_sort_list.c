@@ -48,13 +48,10 @@ void insertion_sort_list(listint_t **list)
 								*list = temp;
 							ayu->prev = temp;
 						}
-						else
-							break;
 						print_list(*list);
 					}
 					temp = temp->prev;
 				}
-				aux = aux->next;
 			}
 			aux = aux->next;
 		}
