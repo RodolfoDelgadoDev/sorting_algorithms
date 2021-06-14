@@ -8,12 +8,13 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *aux = *list, *temp, *ayu;
 
+	if (!(*list))
+		return;
 	while (aux->next)
 	{
 		if (aux->n > (aux->next)->n)
 		{
-			temp = aux->next;
-			aux->next = temp->next;
+			temp = aux->next, aux->next = temp->next;
 			if (temp->next)
 				(temp->next)->prev = aux;
 			temp->prev = aux->prev;
@@ -27,10 +28,8 @@ void insertion_sort_list(listint_t **list)
 			{
 				if (temp->n < (temp->prev)->n)
 				{
-					ayu = temp->prev;
-					temp->prev = ayu->prev;
-					(temp->next)->prev = ayu;
-					ayu->next = temp->next;
+					ayu = temp->prev, temp->prev = ayu->prev;
+					(temp->next)->prev = ayu, ayu->next = temp->next;
 					temp->next = ayu;
 					if (ayu->prev)
 						(ayu->prev)->next = temp;
