@@ -11,45 +11,41 @@ void insertion_sort_list(listint_t **list)
     listint_t *temp;
     listint_t *ayu;
 
-    while (aux)
+    while (aux->next)
         {
-		if (aux->next)
+		if (aux->n > (aux->next)->n)
 		{
-			if (aux->n > (aux->next)->n)
+			temp = aux->next;
+			aux->next = temp->next;
+			if (temp->next)
+				(temp->next)->prev = aux;
+			temp->prev = aux->prev;
+			if (aux->prev)
+				(aux->prev)->next = temp;
+			aux->prev = temp;
+			temp->next = aux;
+			print_list(*list);
+			while (temp->prev)
 			{
-				temp = aux->next;
-				aux->next = temp->next;
-				if (temp->next)
-					(temp->next)->prev = aux;
-				if (aux->prev)
-					(aux->prev)->next = temp;
-				else
-					*list = temp;
-				aux->prev = temp;
-				temp->next = aux;
-				print_list(*list);
-				while (temp)
+				if (temp->n < (temp->prev)->n)
 				{
-					if (temp->prev)
-					{
-						if (temp->n < (temp->prev)->n)
-						{
-							ayu = temp->prev;
-							temp->prev = ayu->prev;
-							aux->prev = ayu;
-							temp->next = ayu;
-							if (ayu->prev)
-								(ayu->prev)->next = temp;
-							else
-								*list = temp;
-							ayu->prev = temp;
-						}
-						print_list(*list);
-					}
-					break;
+					ayu = temp->prev;
+					temp->prev = ayu->prev;
+					aux->prev = ayu;
+					ayu->next = temp->next;
+					temp->next = ayu;
+					if (ayu->prev)
+						(ayu->prev)->next = temp;
+					ayu->prev = temp;
+					if (!(temp->prev))
+                                                *list = temp;
+					print_list(*list);
 				}
+				else
+					break;
 			}
 		}
-		break;
+		else
+			aux = aux->next;
 	}
 }
