@@ -19,7 +19,8 @@ void insertion_sort_list(listint_t **list)
 			temp->prev = aux->prev;
 			if (aux->prev)
 				(aux->prev)->next = temp;
-			aux->prev = temp, temp->next = aux;
+			aux->prev = temp;
+			temp->next = aux;
 			if (!(temp->prev))
 				*list = temp;
 			print_list(*list);
