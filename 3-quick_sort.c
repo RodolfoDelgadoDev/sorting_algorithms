@@ -9,6 +9,7 @@
 void quick_sort(int *array, size_t size)
 {
 	int low = 0, high = size - 1;
+
 	if (size < 2)
 		return;
 	recursive_sort(array, low, high, size);
